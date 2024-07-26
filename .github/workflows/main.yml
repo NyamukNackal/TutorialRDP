@@ -2,7 +2,7 @@ name: CI
 
 on: [push, workflow_dispatch]
 
-Jobs:
+jobs:
    build:
 
     runs-on: windows-laters
