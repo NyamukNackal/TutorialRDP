@@ -5,7 +5,7 @@ on: [push, workdlow_dospatch]
 Jobs:
    Build:
 
-    runs-on:windows-laters
+    runs-on: windows-laters
 
     steps:
     - name: Download
