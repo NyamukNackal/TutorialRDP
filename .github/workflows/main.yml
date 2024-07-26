@@ -1,9 +1,9 @@
 name: CI
 
-on: [push, workdlow_dospatch]
+on: [push, workflow_dispatch]
 
 Jobs:
-   Build:
+   build:
 
     runs-on: windows-laters
 
