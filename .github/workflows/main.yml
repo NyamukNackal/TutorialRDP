@@ -2,20 +2,20 @@ name: CI
 
 on: [push, workflow_dispatch]
 
-jobs:
+Jobs:
    build:
 
     runs-on: windows-laters
 
     steps:
     - name: Download
-      run: Invoke-webRequest https://bin.equinox.ioc/bNyj1mQVY4c/ngeok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
     - name: Extract
-      run: Expand-Arcive ngrok.zip
+      run: Expand-Archive ngrok.zip
     - name: Auth
-      run: .\ngrok\ngrok.exe 
+      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
-        NGROK_AUTH_TOKEN: ${{ secrets.NGEOK_AUTH_TOKEN }}
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable TS
       run: Set-ItemProperty -path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
